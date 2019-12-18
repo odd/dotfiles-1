@@ -1,4 +1,9 @@
 #######
+# Git #
+#######
+.gitignore
+
+#######
 # OSX #
 #######
 .DS_Store
@@ -88,3 +93,10 @@ node_modules
 .vim/backup/*
 .vim/temp/*
 .vim/.netrwhist
+
+####################
+# IDEA             #
+####################
+.idea
+*.iml
+

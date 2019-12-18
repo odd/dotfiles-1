@@ -143,3 +143,39 @@ function curlhammer () {
   done
   bot "done"
 }
+
+function jdk() {  
+  if [ $# -ne 0 ]; then  
+   removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'  
+   if [ -n "${JAVA_HOME+x}" ]; then  
+    removeFromPath $JAVA_HOME  
+   fi  
+   export JAVA_HOME=`/usr/libexec/java_home -v $@`  
+   export PATH=$JAVA_HOME/bin:$PATH  
+  fi  
+  echo JAVA_HOME set to $JAVA_HOME  
+  java -version  
+}  
+
+function removeFromPath() {  
+  export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")  
+}
+
+function javas() {
+  /usr/libexec/java_home $@
+}
+
+function jdks() {
+  javas -V
+}
+ 
+function lux() {
+  local value
+  value=( $(brightness -l | grep 'display 0: brightness' | cut -d ' ' -f 4) )
+  if [[ $value ]]; then
+    brightness -d 1 "$value"
+  fi
+}
+function fix() {
+  cd $(pwd | sed s_DropboxTraveas/Code_Code_)
+}

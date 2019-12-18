@@ -7,20 +7,36 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 
 #Dev frameworks
-#export PATH=$PATH:$ANT_HOME/bin
-export PATH=$PATH:$M2_HOME/bin
+##export PATH=$PATH:$ANT_HOME/bin
+#export PATH=$PATH:$M2_HOME/bin
 
 #Chef
-export PATH=$PATH:/opt/chef/bin:/opt/chef/embedded/bin
+#export PATH=$PATH:/opt/chef/bin:/opt/chef/embedded/bin
 
 #Zend
-export PATH=$PATH:/usr/local/zend/bin
-export PATH=$PATH:/usr/local/zend/mysql/bin
+#export PATH=$PATH:/usr/local/zend/bin
+#export PATH=$PATH:/usr/local/zend/mysql/bin
 
 # NPM
-export PATH=$PATH:/usr/local/share/npm/bin
+#export PATH=$PATH:/usr/local/share/npm/bin
 
-export PATH=$PATH:~/.nvm/v0.10.22/bin
+#export PATH=$PATH:~/.nvm/v0.10.22/bin
+
+#export NVM_DIR="$HOME/.nvm"
+#. "/usr/local/opt/nvm/nvm.sh"
 
 # GO
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+# Spark
+# export PATH=$PATH:/Users/odd/Code/apache-spark/bin:/Users/odd/Code/apache-spark/sbin
+
+# CBT
+#export PATH=$PATH:/Users/odd/Code/cbt
+
+# scalaenv
+export PATH=$PATH:~/.scalaenv/bin
+
+# Haskell
+export PATH="$HOME/Library/Haskell/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

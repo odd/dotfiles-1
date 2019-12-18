@@ -1,9 +1,9 @@
 [user]
-	name = Adam Eivy
-	email = atomantic@gmail.com
+	name = Odd Möller
+	email = odd.moller@gmail.com
 [github]
     # https://github.com/blog/180-local-github-config
-    user = atomantic
+    user = odd
 
     # in a few months, look into the include directive (after bug fixes)
     token = MOVEALONG
@@ -51,7 +51,7 @@
 	safecrlf = warn
 	# prevent crlf (then you will have to deal with the problem -- dos2unix, etc)
 	#safecrlf = true
-	editor = vim
+	editor = nano
 	#editor = subl -w
 
 [alias]
@@ -152,6 +152,8 @@
 	cob = checkout -b
 	sno = show --name-only
 	logsimple = log --graph --abbrev-commit --pretty=oneline --all --decorate
+	branchdate = "!for k in `git branch -a | sed -e s/^..// -e 's/(detached from .*)/HEAD/'`; do echo -e `git log -1 --pretty=format:\"%Cgreen%ci |%Cblue%cr |%Creset$k |%s\" $k --`;done | sort | column -t -s \"|\" "
+	branches = for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads
 
 [apply]
 	whitespace = nowarn

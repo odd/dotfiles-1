@@ -22,7 +22,11 @@ alias to.devapps='cd ${MYDEVAPPS}'
 #################################
 # Simple Program Name Shortening
 alias g=git
-
+alias l="exa -lahF"
+alias diff=delta
+alias cat=bat
+alias grep=ripgrep
+alias ls=exa
 
 #############################
 # Utilities
@@ -64,19 +68,19 @@ alias files.usage.user='sudo fs_usage -e -f filesystem|grep -v CACHE_HIT|grep -v
 # -l Long format
 # -h Short size suffixes (B, K, M, G, P)
 # -p Postpend slash to folders
-alias ls='ls -G -h -p '
-alias ll='ls -l -G -h -p '
+#alias ls='gls -G -h -p'
+#alias ll='gls -l -G -h -p --time-style=long-iso'
 
 # Restart Apache on Mac
 alias apacherestart="sudo /usr/sbin/apachectl restart"
 
 #Personal Commands
-alias game.seek='txt="";for i in {1..20};do txt=$txt"$i. ";done;txt=$txt" Ready or not, here I come";say $txt'
+#alias game.seek='txt="";for i in {1..20};do txt=$txt"$i. ";done;txt=$txt" Ready or not, here I come";say $txt'
 
 #Git Tools
 # assumes git-up is installed (gem install git-up)
 # switches to 'develop' branch, updates all local branches (nicely using git-up), removes all local branches already merged into 'develop'
-alias gitdev='git checkout develop; git-up; git branch --merged develop | grep -v "\* develop" | xargs -n 1 git branch -d; git branch;'
+#alias gitdev='git checkout develop; git-up; git branch --merged develop | grep -v "\* develop" | xargs -n 1 git branch -d; git branch;'
 
 # node.js + io.js
 alias usenode='brew unlink iojs && brew link node && echo Using Node.js'
@@ -86,3 +90,16 @@ alias useio='brew unlink node && brew link --force iojs && echo Using io.js'
 alias port-forward-enable="echo 'rdr pass inet proto tcp from any to any port 2376 -> 127.0.0.1 port 2376' | sudo pfctl -ef -"
 alias port-forward-disable="sudo pfctl -F all -f /etc/pf.conf"
 alias port-forward-list="sudo pfctl -s nat"
+alias mkdirs='mkdir -p '
+
+# Odd's
+#alias brewup='brew update && brew upgrade'
+#alias git=hub
+#alias macup='sudo softwareupdate -ia'
+#alias clean='find . -name target | xargs rm -rf'
+
+# docker
+alias docker-clean-images='docker ps --filter 'status=Exited' -a | xargs docker stop docker images --filter "dangling=true" -q | xargs docker rmi'
+alias docker-clean-images-all='docker rmi $(docker images -q)'
+alias docker-clean='docker rm -vf $(docker ps -a -q)'
+alias docker-clean-volumes='docker volume rm $(docker volume ls -qf dangling=true)'

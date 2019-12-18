@@ -1,3 +1,5 @@
+fpath=(/usr/local/share/zsh/site-functions $fpath)
+
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.dotfiles/oh-my-zsh
 
@@ -22,7 +24,8 @@ export CASE_SENSITIVE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew cloudapp colorize compleat dirpersist gem git git-flow github osx mvn node npm nvm rvm ssh-agent)
+#plugins=(brew cloudapp colorize compleat dirpersist gem git git-flow github osx mvn node npm nvm rvm ssh-agent)
+plugins=(brew cloudapp colorize compleat dirpersist gem git git-flow osx mvn node npm nvm rvm ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -35,9 +38,24 @@ unsetopt correct
 if which rbevenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export PATH="/Users/"$(whoami)"/.rbenv/shims:${PATH}"
-source "/usr/local/Cellar/rbenv/0.4.0/libexec/../completions/rbenv.zsh"
+source "/usr/local/Cellar/rbenv/1.0.0/libexec/../completions/rbenv.zsh"
 rbenv rehash 2>/dev/null
 
 nvm use stable
 # run fortune on new terminal :)
 fortune
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+# command history per directory
+# http://unix.stackexchange.com/questions/204833/keeping-history-per-working-directory-cf-per-shell-session
+HISTSIZE=1000
+SAVEHIST=10000
+setopt HIST_SAVE_NO_DUPS INC_APPEND_HISTORY
+HISTFILE=~/.zsh/dirhist/${PWD//\//@}
+chpwd() {
+  [[ $PWD = $OLDPWD ]] || fc -Pp ~/.zsh/dirhist/${PWD//\//@}
+}
+
+# scalaenv
+eval "$(scalaenv init -)"
